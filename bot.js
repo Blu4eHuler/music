@@ -229,7 +229,7 @@ client.on('message', async msg => {
 		return msg.channel.sendEmbed(embedqu);
 	} else if (command === `pause`) {
 		if (serverQueue && serverQueue.playing) {
-			serverQueue.playing = false;
+			serverQueue.playing = true;
 			serverQueue.connection.dispatcher.pause();
 			return msg.channel.send('تم الايقاف');
 		}
@@ -248,7 +248,7 @@ client.on('message', async msg => {
 	return undefined;
 });
 
-async function handleVideo(video, msg, voiceChannel, playlist = false) {
+async function handleVideo(video, msg, voiceChannel, playlist = true) {
 	const serverQueue = queue.get(msg.guild.id);
 	console.log(video);
 	
